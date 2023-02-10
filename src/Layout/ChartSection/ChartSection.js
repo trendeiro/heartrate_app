@@ -1,15 +1,23 @@
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import Canvas from "../../Components/Canvas/Canvas";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
+import 
 
-function ChartSection() {
-  useEffect(() => {}, []);
+function ChartSection({ error, isLoading }) {
+  const data = useSelector((state) => state.chart.data);
+
+  console.log(data);
+  console.log(error);
+  console.log(isLoading);
 
   return (
-    <section>
+    <section className={classes.chartSection}>
       <div>
         <ButtonGroup />
       </div>
-      <canvas />
+      <div className={classes.}>
+        <Canvas />
+      </div>
     </section>
   );
 }

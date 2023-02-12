@@ -6,24 +6,24 @@ const chartSlice = createSlice({
   initialState: {
     data: [],
     showChart: false,
-    filterOpt:{
-      min:{
-        min:null,
-        max:null,
+    filterOpt: {
+      min: {
+        min: null,
+        max: null,
       },
-      max:{
-        min:null,
-        max:null,
+      max: {
+        min: null,
+        max: null,
       },
-      ave:{
-        min:null,
-        max:null,
+      ave: {
+        min: null,
+        max: null,
       },
-      date:{
-        begin:null,
-        end:null,
+      date: {
+        begin: null,
+        end: null,
       },
-    }
+    },
   },
   reducers: {
     resetState(state, action) {
@@ -34,9 +34,35 @@ const chartSlice = createSlice({
       const initFilters = findIniFilters(action.payload);
       state.filterOpt = initFilters;
     },
-    showChart(state, action){
+    showChart(state, action) {
       state.showChart = action.payload;
-    }
+    },
+    changeFilterOpt(state, action) {
+      if (action.payload.beat === "min") {
+        if (action.payload.type === "min") {
+          state.filterOpt.min.min = action.payload.value;
+          return;
+        }
+        state.filterOpt.min.max = action.payload.value;
+        return;
+      }
+      if (action.payload.beat === "max") {
+        if (action.payload.type === "min") {
+          state.filterOpt.max.min = action.payload.value;
+          return;
+        }
+        state.filterOpt.max.max = action.payload.value;
+        return;
+      }
+      if (action.payload.beat === "ave") {
+        if (action.payload.type === "min") {
+          state.filterOpt.ave.min = action.payload.value;
+          return;
+        }
+        state.filterOpt.ave.max = action.payload.value;
+        return;
+      }
+    },
   },
 });
 

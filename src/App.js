@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import classes from "./App.module.css";
 import useGetData from "./Hooks/use-getData";
-import ChartSection from "./Layout/ChartSection/ChartSection";
+import { parseValue } from "./js/bdDataManage";
 import Header from "./Layout/Header/Header";
 import MainSection from "./Layout/MainSection/MainSection";
 import TableSection from "./Layout/TableSection/TableSection";

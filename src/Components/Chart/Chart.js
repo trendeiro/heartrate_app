@@ -63,8 +63,8 @@ export function Chart({ data: dbData }) {
         label: "Max",
         data: dbData.map((maximum) => {
           if (
-            maximum.maximum >= filterOpt.max.min &&
-            maximum.maximum <= filterOpt.max.max
+            parseInt(maximum.maximum) >= filterOpt.max.min &&
+            parseInt(maximum.maximum) <= filterOpt.max.max
           ) {
             return maximum.maximum;
           }
@@ -78,8 +78,8 @@ export function Chart({ data: dbData }) {
         label: "Min",
         data: dbData.map((minimum) => {
           if (
-            minimum.minimum >= filterOpt.min.min &&
-            minimum.minimum <= filterOpt.min.max
+            parseInt(minimum.minimum) >= filterOpt.min.min &&
+            parseInt(minimum.minimum) <= filterOpt.min.max
           ) {
             return minimum.minimum;
           }
@@ -93,8 +93,8 @@ export function Chart({ data: dbData }) {
         label: "Average",
         data: dbData.map((meanAverage) => {
           if (
-            meanAverage.meanAverage >= filterOpt.ave.min &&
-            meanAverage.meanAverage <= filterOpt.ave.max
+            parseInt(meanAverage.meanAverage) >= filterOpt.ave.min &&
+            parseInt(meanAverage.meanAverage) <= filterOpt.ave.max
           ) {
             return meanAverage.meanAverage;
           }

@@ -19,10 +19,13 @@ function MainSection({ error, isLoading }) {
     }
   }
 
+  const displayType = 
+    chartStatus ? "chart" : "table" 
+  
   
   return (
     <main className={classes.main}>
-      <h2 className={classes.main__title}>chart heart beat</h2>
+      <h2 className={classes.main__title}>{displayType} heart beat</h2>
       <div className={classes.main__section}>
         <div className={classes.main__btnSection}>
           <Options/>

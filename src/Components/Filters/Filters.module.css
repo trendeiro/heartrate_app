@@ -1,0 +1,6 @@
+.selectSection{
+    display: flex;
+    width: 50rem;
+    gap: 1.6rem;
+    justify-content: space-around;
+}

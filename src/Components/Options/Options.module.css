@@ -1,0 +1,6 @@
+.optionsSection{
+    display: flex;
+    gap: 1.6rem;
+    justify-content: space-between;
+    margin: 0 2.4rem;
+}

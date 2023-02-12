@@ -2,14 +2,14 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 
 const backend = axios.create({
-  baseURL: "https://mywcph-3002.preview.csb.app/",
+  baseURL: "http://localhost:3000/",
 });
 
 const useGetData = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const sendRequest = useCallback(async (requestConfig, VERNOME) => {
+  const sendRequest = useCallback(async (requestConfig, getData) => {
     setIsLoading(true);
     setError(false);
     try {
@@ -18,7 +18,7 @@ const useGetData = () => {
         method: requestConfig.method,
       });
 
-      VERNOME(response.data);
+      getData(response.data);
     } catch (error) {
       setError(error.message);
     }

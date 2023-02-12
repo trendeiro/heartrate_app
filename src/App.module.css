@@ -1,0 +1,19 @@
+.container {
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+}
+
+.mainContainer{
+  height: 65%;
+  
+  background-image: linear-gradient(
+    to right,
+    rgba(230, 57, 70, 0.8),
+    rgba(161, 40, 49, 0.8)
+
+  );
+  border-bottom-left-radius: 8rem;
+  border-bottom-right-radius: 8rem;
+}
+

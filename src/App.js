@@ -1,8 +1,10 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import classes from "./App.module.scss";
+import classes from "./App.module.css";
 import useGetData from "./Hooks/use-getData";
 import ChartSection from "./Layout/ChartSection/ChartSection";
+import Header from "./Layout/Header/Header";
+import MainSection from "./Layout/MainSection/MainSection";
 import TableSection from "./Layout/TableSection/TableSection";
 import { chartActions } from "./Store/slice/chart/chart-slice";
 
@@ -27,14 +29,12 @@ function App() {
       getData
     );
   }, [sendRequest, getData]);
-
+  
   return (
     <div className={classes.container}>
-      <div className={classes.container__chart}>
-        <ChartSection error={error} isLoading={isLoading} />
-      </div>
-      <div className={classes.container__table}>
-        <TableSection error={error} isLoading={isLoading} />
+      <Header/>
+      <div className={classes.mainContainer}>
+        <MainSection error={error} isLoading={isLoading}/>
       </div>
     </div>
   );

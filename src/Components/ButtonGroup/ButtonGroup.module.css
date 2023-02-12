@@ -1,0 +1,6 @@
+.buttonSection{
+    display: flex;
+    gap: 1.6rem;
+    float: right;
+    padding-right: 1.6rem;
+}

@@ -1,17 +1,22 @@
 import { useSelector } from "react-redux";
 import ButtonGroup from "../ButtonGroup/ButtonGroup";
 import Filters from "../Filters/Filters";
-import classes from "./Options.module.css"
+import classes from "./Options.module.css";
 function Options() {
+  const chartStatus = useSelector((state) => state.chart.showChart);
 
-    const filterOpt = useSelector(state => state.chart.filterOpt);
+  const optionStyle = [
+    classes.singleOption,
+    chartStatus && classes.optionsSection,
+  ];
 
+  return (
+    <div className={optionStyle.join(" ")}>
+      {chartStatus && <Filters />}
 
-    return <div className={classes.optionsSection}>
-        <Filters/>
-        <ButtonGroup/>
+      <ButtonGroup />
     </div>
+  );
 }
 
-
-export default Options
+export default Options;

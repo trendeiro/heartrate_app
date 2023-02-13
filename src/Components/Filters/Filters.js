@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useChangeFilters from "../../Hooks/use-changeFilter";
 import { chartActions } from "../../Store/slice/chart/chart-slice";
 import SelectGroup from "../SelectGroup/SelectGroup";
 import classes from "./Filters.module.css";
 function Filters() {
   const dispatch = useDispatch();
-
+  const { updateFilter } = useChangeFilters();
   const [defaultsValue, setDefault] = useState({
     min: {
       min: null,
@@ -49,67 +50,15 @@ function Filters() {
   }, [filterOpt]);
 
   const onChangeMinHandle = (e, type) => {
-    if (type === "min") {
-      dispatch(
-        chartActions.changeFilterOpt({
-          beat: "min",
-          type: type,
-          value: e.target.value,
-        })
-      );
-      return;
-    }
-    dispatch(
-      chartActions.changeFilterOpt({
-        beat: "min",
-        type: type,
-        value: e.target.value,
-      })
-    );
-
-    return;
+    console.log(type);
+    console.log(e);
+    updateFilter("min", type, e);
   };
   const onChangeMaxHandle = (e, type) => {
-    if (type === "min") {
-      dispatch(
-        chartActions.changeFilterOpt({
-          beat: "max",
-          type: type,
-          value: e.target.value,
-        })
-      );
-      return;
-    }
-    dispatch(
-      chartActions.changeFilterOpt({
-        beat: "max",
-        type: type,
-        value: e.target.value,
-      })
-    );
-
-    return;
+    updateFilter("max", type, e);
   };
   const onChangeAveHandle = (e, type) => {
-    if (type === "min") {
-      dispatch(
-        chartActions.changeFilterOpt({
-          beat: "ave",
-          type: type,
-          value: e.target.value,
-        })
-      );
-      return;
-    }
-    dispatch(
-      chartActions.changeFilterOpt({
-        beat: "ave",
-        type: type,
-        value: e.target.value,
-      })
-    );
-
-    return;
+    updateFilter("ave", type, e);
   };
   return (
     <div className={classes.selectSection}>

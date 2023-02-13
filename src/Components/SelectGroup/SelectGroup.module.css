@@ -1,4 +1,27 @@
-.selectGroup{
-    display: flex;
-    gap: 2.4rem;
+.selectGroupSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
+  padding: 0 1.4rem;
+}
+
+.spanError {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  color: #f03e3e;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+.show {
+  visibility: visible;
 }

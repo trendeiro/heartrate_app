@@ -1,10 +1,9 @@
+import classes from "./SelectBox.module.css";
 
-function SelectBox({ options, defaultVal,onChangeEvent }) {
-
-  const removeDuplicates = () =>{
-
-   return options.filter((item,index) => options.indexOf(item) === index)
-  }
+function SelectBox({ options, defaultVal, onChangeEvent }) {
+  const removeDuplicates = () => {
+    return options.filter((item, index) => options.indexOf(item) === index);
+  };
   const DataOptions = () => {
     const uniqueOpt = removeDuplicates();
     const parsedOptions = uniqueOpt.map((options) => parseInt(options));
@@ -12,29 +11,26 @@ function SelectBox({ options, defaultVal,onChangeEvent }) {
       return first > second ? 1 : -1;
     });
     return sortedOptions.map((options, index) => {
-      if(options === defaultVal){
+      if (options === defaultVal) {
         return (
-          <option key={index} value={options} selected >
+          <option key={index} value={options} selected>
             {options}
           </option>
         );
       }
       return (
-        <option key={index} value={options} >
+        <option key={index} value={options}>
           {options}
         </option>
       );
     });
   };
 
-
-
   return (
     <div>
-      <select 
-      
-      onChange={onChangeEvent}
-      >{DataOptions()}</select>
+      <select className={classes.select} onChange={onChangeEvent}>
+        {DataOptions()}
+      </select>
     </div>
   );
 }

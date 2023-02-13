@@ -1,6 +1,6 @@
-.selectSection{
-    display: flex;
-    width: 50rem;
-    gap: 1.6rem;
-    justify-content: space-around;
+.selectSection {
+  display: flex;
+  width: 50%;
+  gap: 2.4rem;
+  justify-content: space-around;
 }

@@ -34,6 +34,10 @@ const chartSlice = createSlice({
       const initFilters = findIniFilters(action.payload);
       state.filterOpt = initFilters;
     },
+    setFilter(state, action) {
+      const initFilters = findIniFilters(state.data);
+      state.filterOpt = initFilters;
+    },
     showChart(state, action) {
       state.showChart = action.payload;
     },

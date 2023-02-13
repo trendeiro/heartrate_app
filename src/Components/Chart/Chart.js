@@ -53,12 +53,27 @@ export function Chart({ data: dbData }) {
 
   const labels = dbData.map((dateTime) => {
     const arragedDate = arrangeDate(dateTime.dateTime);
-    return arragedDate
+    return arragedDate;
   });
 
   const data = {
     labels,
     datasets: [
+      {
+        label: "Min",
+        data: dbData.map((minimum) => {
+          if (
+            parseInt(minimum.minimum) >= filterOpt.min.min &&
+            parseInt(minimum.minimum) <= filterOpt.min.max
+          ) {
+            return minimum.minimum;
+          }
+          return null;
+        }),
+        borderColor: "rgb(55, 178, 77)",
+        backgroundColor: "rgba(55, 178, 77, 0.5)",
+        yAxisID: "y",
+      },
       {
         label: "Max",
         data: dbData.map((maximum) => {
@@ -72,21 +87,6 @@ export function Chart({ data: dbData }) {
         }),
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
-        yAxisID: "y",
-      },
-      {
-        label: "Min",
-        data: dbData.map((minimum) => {
-          if (
-            parseInt(minimum.minimum) >= filterOpt.min.min &&
-            parseInt(minimum.minimum) <= filterOpt.min.max
-          ) {
-            return minimum.minimum;
-          }
-          return null;
-        }),
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
         yAxisID: "y",
       },
       {

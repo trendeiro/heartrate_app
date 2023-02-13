@@ -8,16 +8,18 @@ import classes from "./ButtonGroup.module.css";
 function ButtonGroup() {
   const dispatch = useDispatch();
   const chartStatus = useSelector((state) => state.chart.showChart);
+  const bdData = useSelector((state) => state.chart.data);
   const tblCtx = useContext(TableContext);
+  const showTable = tblCtx.showTable;
   const onClickChartHandle = () => {
     dispatch(chartActions.showChart(!chartStatus));
     dispatch(chartActions.setFilter());
   };
   const onClickTabletHandle = () => {
     dispatch(chartActions.showChart(false));
-    tblCtx.teste();
+    tblCtx.changeShowTable(!showTable);
+    tblCtx.changeFilters(bdData);
   };
-
   return (
     <div className={classes.buttonSection}>
       <Button
@@ -26,7 +28,8 @@ function ButtonGroup() {
         onClickHandle={onClickChartHandle}
         active={chartStatus}
       />
-      <Button key={2} text={"Table"} onClickHandle={onClickTabletHandle} />
+        
+      <Button key={2} text={"Table"} onClickHandle={onClickTabletHandle} active={showTable}/>
     </div>
   );
 }

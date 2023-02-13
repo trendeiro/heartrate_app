@@ -26,20 +26,29 @@ const TableContext = React.createContext({
     order: "desc",
   },
   changeFilters: (data) => {},
+  changeShowTable: () => {},
 });
 
-const setFilters = (data) => {
-  const initFilters = findIniFilters(data);
-  return {
-    filterOpt: initFilters,
-  };
-};
 
-const tableSortedBy = (data) => {};
+
 
 export const TableContextProvider = (props) => {
+  const [showTable, setShowTable] = useState(false);
+  const [filterOpt, setFilterOpt] = useState(null)
+
+  const showTableHandler = (show) => {
+    setShowTable(show);
+  };
+  const setFilters = (data) => {
+    const initFilters = findIniFilters(data);
+    setFilterOpt(initFilters);
+  };
+
   const contextValue = {
-    changeFilters: teste1,
+    changeFilters: setFilters,
+    changeShowTable:showTableHandler,
+    showTable:showTable,
+    filterOpt:filterOpt,
   };
 
   return (

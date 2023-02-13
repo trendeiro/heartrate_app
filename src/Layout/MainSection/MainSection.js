@@ -1,19 +1,24 @@
 import { useSelector } from "react-redux";
 import Options from "../../Components/Options/Options";
+import Table from "../../Components/Table/Table";
 import ChartSection from "../ChartSection/ChartSection";
 import classes from "./MainSection.module.css";
 
 function MainSection({ error, isLoading }) {
   const chartStatus = useSelector((state) => state.chart.showChart);
+  const tableStatus = useSelector((state) => state.chart.showTable);
 
   const dataSection = () => {
     if (isLoading) {
       return "is loading";
     }
-    if (!isLoading && chartStatus) {
+    if (!isLoading && !tableStatus && chartStatus) {
       return <ChartSection />;
     }
-    if (!isLoading && !chartStatus) {
+    if (!isLoading && !chartStatus && tableStatus) {
+      return <Table/>;
+    }
+    if (!isLoading && !chartStatus && !tableStatus) {
       return "Please choose a way to see the data by clicking on one of the buttons in the right coner!";
     }
   };

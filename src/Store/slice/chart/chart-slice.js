@@ -6,6 +6,7 @@ const chartSlice = createSlice({
   initialState: {
     data: [],
     showChart: false,
+    showTable: false,
     filterOpt: {
       min: {
         min: null,

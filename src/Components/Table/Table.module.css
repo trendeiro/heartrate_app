@@ -1,0 +1,9 @@
+.table {
+  width: 50%;
+  padding-top: 1.8rem;
+  margin-bottom: 1.8rem;
+  /* border: 1px solid #343a40; */
+  border-collapse: collapse;
+  font-size: 1.8rem;
+  margin: 0 auto;
+}

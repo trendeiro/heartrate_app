@@ -1,0 +1,11 @@
+.tbody td {
+  /* border: 1px solid #343a40; */
+  padding: 0.6rem 1.4rem;
+}
+
+.tbody tr:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+.tbody tr:nth-child(even) {
+  background-color: #e9ecef;
+}

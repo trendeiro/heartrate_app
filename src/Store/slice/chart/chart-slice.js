@@ -5,8 +5,6 @@ const chartSlice = createSlice({
   name: "chart",
   initialState: {
     data: [],
-    showChart: false,
-    showTable: false,
     filterOpt: {
       min: {
         min: null,
@@ -25,6 +23,13 @@ const chartSlice = createSlice({
         end: null,
       },
     },
+    showChart: false,
+    showTable: false,
+    settingsTableDisplay: {
+      rowNum: 10,
+      spaceAvaileble: null,
+      rowHeight: null,
+    },
   },
   reducers: {
     resetState(state, action) {
@@ -42,6 +47,21 @@ const chartSlice = createSlice({
     showChart(state, action) {
       state.showChart = action.payload;
     },
+    showTable(state, action) {
+      state.showTable = action.payload;
+    },
+    changeSetTblDisplay(state, action) {
+      if (action.payload.toChange === "num") {
+        state.settingsTableDisplay.rowNum = action.payload.value;
+      }
+      if (action.payload.toChange === "space") {
+        state.settingsTableDisplay.spaceAvaileble = action.payload.value;
+      }
+      if (action.payload.toChange === "height") {
+        state.settingsTableDisplay.rowHeight = action.payload.value;
+      }
+    },
+
     changeFilterOpt(state, action) {
       if (action.payload.beat === "min") {
         if (action.payload.type === "min") {

@@ -50,8 +50,6 @@ function Filters() {
   }, [filterOpt]);
 
   const onChangeMinHandle = (e, type) => {
-    console.log(type);
-    console.log(e);
     updateFilter("min", type, e);
   };
   const onChangeMaxHandle = (e, type) => {

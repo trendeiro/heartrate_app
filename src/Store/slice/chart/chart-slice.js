@@ -26,9 +26,11 @@ const chartSlice = createSlice({
     showChart: false,
     showTable: false,
     tblDisplaySet: {
-      rowNum: 10,
-      spaceAvaileble: null,
-      rowHeight: null,
+      rowNum: 15,
+      sort: {
+        order: "desc",
+        type: "min",
+      },
     },
   },
   reducers: {
@@ -53,12 +55,6 @@ const chartSlice = createSlice({
     changeSetTblDisplay(state, action) {
       if (action.payload.toChange === "num") {
         state.tblDisplaySet.rowNum = action.payload.value;
-      }
-      if (action.payload.toChange === "space") {
-        state.tblDisplaySet.spaceAvaileble = action.payload.value;
-      }
-      if (action.payload.toChange === "height") {
-        state.tblDisplaySet.rowHeight = action.payload.value;
       }
     },
 
@@ -87,6 +83,10 @@ const chartSlice = createSlice({
         state.filterOpt.ave.max = action.payload.value;
         return;
       }
+    },
+    changeSort(state, action) {
+      state.filterOpt.sort.order = action.payload.order;
+      state.filterOpt.sort.type = action.payload.type;
     },
   },
 });

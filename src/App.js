@@ -29,12 +29,12 @@ function App() {
       getData
     );
   }, [sendRequest, getData]);
-  
+
   return (
     <div className={classes.container}>
-      <Header/>
+      <Header />
       <div className={classes.mainContainer}>
-        <MainSection error={error} isLoading={isLoading}/>
+        <MainSection error={error} isLoading={isLoading} />
       </div>
     </div>
   );

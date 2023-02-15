@@ -25,7 +25,7 @@ export const getHeaders = (data) => {
 };
 
 export const arrangePagesToDisplay = ({ settings }) => {
-  const totalRows = settings.spaceAvaileble / settings.rowHeight - 1;
+  const totalRows = settings.spaceAvaileble / settings.rowHeight - 2;
   let exactTotalRows = totalRows;
 
   if (totalRows % 2) {
@@ -38,8 +38,48 @@ export const arrangePagesToDisplay = ({ settings }) => {
   return settings.rowNum;
 };
 
-export const setupDataToDisplay = ({ data, rowNum }) => {
-  const changeOrder = data.map((ele) => {
+const filterData = (data, filters) => {
+  const dataMinFiltered = [];
+  data.forEach((ele) => {
+    if (
+      parseInt(filters.min.min) <= parseInt(ele.minimum) &&
+      parseInt(filters.min.max) >= parseInt(ele.minimum)
+    ) {
+      dataMinFiltered.push(ele);
+      return;
+    }
+    return;
+  });
+  const dataMaxFiltered = [];
+  dataMinFiltered.forEach((ele) => {
+    if (
+      parseInt(filters.max.min) <= parseInt(ele.maximum) &&
+      parseInt(filters.max.max) >= parseInt(ele.maximum)
+    ) {
+      dataMaxFiltered.push(ele);
+      return;
+    }
+    return;
+  });
+  const dataAveFiltered = [];
+
+  dataMaxFiltered.forEach((ele) => {
+    if (
+      parseInt(filters.ave.min) <= parseInt(ele.meanAverage) &&
+      parseInt(filters.ave.max) >= parseInt(ele.meanAverage)
+    ) {
+      dataAveFiltered.push(ele);
+      return;
+    }
+    return;
+  });
+  return dataAveFiltered;
+};
+
+export const setupDataToDisplay = ({ data, rowNum, filters }) => {
+  const dataFilter = filterData(data, filters);
+
+  const changeOrder = dataFilter.map((ele) => {
     const arrangedDate = arrangeDate(ele.dateTime);
     return {
       dateTime: arrangedDate,

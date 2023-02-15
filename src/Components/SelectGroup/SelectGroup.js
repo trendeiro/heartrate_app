@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SelectBox from "../Ui/SelectBox/SelectBox";
 import classes from "./SelectGroup.module.css";
 function SelectGroup({ groupOptions, groupDefault, labelText, onchangeEvent }) {
   const [error, setError] = useState(false);
+  const [options, setOptions] = useState([]);
+
   const onChangeMinHandle = (e) => {
     if (parseInt(e.target.value) > groupDefault.max) {
       setError(true);
@@ -13,6 +15,7 @@ function SelectGroup({ groupOptions, groupDefault, labelText, onchangeEvent }) {
     onchangeEvent(e, "min");
     return;
   };
+
   const onChangeMaxHandle = (e) => {
     if (parseInt(e.target.value) < groupDefault.min) {
       setError(true);
@@ -24,6 +27,22 @@ function SelectGroup({ groupOptions, groupDefault, labelText, onchangeEvent }) {
     return;
   };
 
+  const removeDuplicates = useCallback(() => {
+    return groupOptions.filter(
+      (item, index) => groupOptions.indexOf(item) === index
+    );
+  }, [groupOptions]);
+
+  useEffect(() => {
+    const uniqueOpt = removeDuplicates();
+    const parsedOptions = uniqueOpt.map((options) => parseInt(options));
+    const sortedOptions = parsedOptions.sort((first, second) => {
+      return first > second ? 1 : -1;
+    });
+
+    setOptions(sortedOptions);
+  }, [groupOptions, removeDuplicates]);
+
   const classesSelectBox = [classes.spanError, error && classes.show];
 
   return (
@@ -32,7 +51,7 @@ function SelectGroup({ groupOptions, groupDefault, labelText, onchangeEvent }) {
       <div className={classes.selectGroup}>
         <SelectBox
           id={"minMin"}
-          options={groupOptions}
+          options={options}
           defaultVal={parseInt(groupDefault.min)}
           onChangeEvent={onChangeMinHandle}
           error={error}
@@ -40,7 +59,7 @@ function SelectGroup({ groupOptions, groupDefault, labelText, onchangeEvent }) {
         <span>To</span>
         <SelectBox
           id={"minMax"}
-          options={groupOptions}
+          options={options}
           defaultVal={groupDefault.max}
           onChangeEvent={onChangeMaxHandle}
           error={error}

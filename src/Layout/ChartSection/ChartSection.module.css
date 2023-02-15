@@ -1,5 +1,5 @@
-.chartSection{
-    height: inherit;
-    padding-bottom: 1.4rem;
-    margin: 0 auto;
+.chartSection {
+  min-height: inherit;
+  padding-bottom: 1.4rem;
+  margin: 0 auto;
 }

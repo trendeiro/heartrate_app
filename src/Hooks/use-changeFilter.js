@@ -14,8 +14,18 @@ const useChangeFilters = () => {
     );
   };
 
+  const updateSort = (type, e) => {
+    dispatch(
+      chartActions.changeSort({
+        type: type,
+        order: e.target.value,
+      })
+    );
+  };
+
   return {
     updateFilter,
+    updateSort,
   };
 };
 

@@ -25,14 +25,14 @@ function ButtonGroup() {
         key={1}
         text={"Chart"}
         onClickHandle={onClickChartHandle}
-        active={chartStatus}
+        style={[chartStatus && classes.buttonActive]}
       />
 
       <Button
         key={2}
         text={"Table"}
         onClickHandle={onClickTabletHandle}
-        active={showTable}
+        style={[showTable && classes.buttonActive]}
       />
     </div>
   );

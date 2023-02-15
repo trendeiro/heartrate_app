@@ -6,3 +6,8 @@
   justify-content: space-between;
   margin: 0 2.4rem;
 }
+
+.tblOpt {
+  display: flex;
+  gap: 2.4rem;
+}

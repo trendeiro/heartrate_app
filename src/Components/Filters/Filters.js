@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useChangeFilters from "../../Hooks/use-changeFilter";
 import SelectGroup from "../SelectGroup/SelectGroup";
 import classes from "./Filters.module.css";
-function Filters() {
-  const { updateFilter } = useChangeFilters();
+function Filters({ tblOpt }) {
+  const { updateFilter, updateSort } = useChangeFilters();
   const [defaultsValue, setDefault] = useState({
     min: {
       min: null,
@@ -56,6 +56,11 @@ function Filters() {
   const onChangeAveHandle = (e, type) => {
     updateFilter("ave", type, e);
   };
+
+  const onChangeSortHandle = (type, e) => {
+    updateSort(type, e);
+  };
+
   return (
     <div className={classes.selectSection}>
       <SelectGroup

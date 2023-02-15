@@ -1,0 +1,14 @@
+.selectGroupSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
+  padding: 0 1.4rem;
+}

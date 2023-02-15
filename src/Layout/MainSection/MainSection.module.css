@@ -1,19 +1,17 @@
 .main {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: #fff;
-  height: 70vh;
+  height: auto;
+  min-height: 70vh;
   width: 90vw;
   border: 1px #777;
   border-radius: 3.6rem;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-  animation: growFadeIn 0.5s;
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 20%);
+  animation: MainSection_growFadeIn__Zyv34 0.5s;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  margin: 0 auto;
 }
 
 .main__title {
@@ -27,12 +25,14 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  height: inherit;
+  min-height: 50vh;
+  height: auto;
 }
 .main__btnSection {
+  padding: 1.2rem;
 }
 .main__showDataSection {
-  height: 100%;
+  min-height: inherit;
 }
 
 @keyframes growFadeIn {

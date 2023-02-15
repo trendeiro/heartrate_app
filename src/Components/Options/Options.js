@@ -4,15 +4,16 @@ import Filters from "../Filters/Filters";
 import classes from "./Options.module.css";
 function Options() {
   const chartStatus = useSelector((state) => state.chart.showChart);
+  const tableStatus = useSelector((state) => state.chart.showTable);
 
   const optionStyle = [
     classes.singleOption,
-    chartStatus && classes.optionsSection,
+    chartStatus || tableStatus && classes.optionsSection,
   ];
 
   return (
     <div className={optionStyle.join(" ")}>
-      {chartStatus && <Filters />}
+      {chartStatus || tableStatus && <Filters />}
 
       <ButtonGroup />
     </div>

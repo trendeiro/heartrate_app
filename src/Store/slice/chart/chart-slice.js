@@ -25,7 +25,7 @@ const chartSlice = createSlice({
     },
     showChart: false,
     showTable: false,
-    settingsTableDisplay: {
+    tblDisplaySet: {
       rowNum: 10,
       spaceAvaileble: null,
       rowHeight: null,
@@ -52,13 +52,13 @@ const chartSlice = createSlice({
     },
     changeSetTblDisplay(state, action) {
       if (action.payload.toChange === "num") {
-        state.settingsTableDisplay.rowNum = action.payload.value;
+        state.tblDisplaySet.rowNum = action.payload.value;
       }
       if (action.payload.toChange === "space") {
-        state.settingsTableDisplay.spaceAvaileble = action.payload.value;
+        state.tblDisplaySet.spaceAvaileble = action.payload.value;
       }
       if (action.payload.toChange === "height") {
-        state.settingsTableDisplay.rowHeight = action.payload.value;
+        state.tblDisplaySet.rowHeight = action.payload.value;
       }
     },
 

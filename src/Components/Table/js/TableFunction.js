@@ -24,20 +24,21 @@ export const getHeaders = (data) => {
   return headers;
 };
 
-export const arrangePagesToDisplay = ({ data, settings }) => {
+export const arrangePagesToDisplay = ({ settings }) => {
   const totalRows = settings.spaceAvaileble / settings.rowHeight - 1;
   let exactTotalRows = totalRows;
 
-  if (totalRows % 1) {
+  if (totalRows % 2) {
     exactTotalRows = totalRows - (totalRows % 1);
   }
 
   if (settings.rowNum !== exactTotalRows) {
     return exactTotalRows;
   }
+  return settings.rowNum;
 };
 
-export const setupDataToDisplay = (data) => {
+export const setupDataToDisplay = ({ data, rowNum }) => {
   const changeOrder = data.map((ele) => {
     const arrangedDate = arrangeDate(ele.dateTime);
     return {
@@ -47,5 +48,24 @@ export const setupDataToDisplay = (data) => {
       minimum: ele.minimum,
     };
   });
-  return changeOrder;
+  const finalresult = [];
+  let totalPage = changeOrder.length / rowNum;
+  let exactTotalPage = totalPage;
+
+  if (totalPage % 2 >= 0.1) {
+    exactTotalPage = totalPage - (totalPage % 2) + 1;
+  }
+
+  let aux1 = 0;
+  let aux2 = rowNum;
+  for (let i = 0; i < exactTotalPage; i++) {
+    finalresult.push(changeOrder.slice(aux1, aux2));
+    aux1 = aux2;
+    aux2 = aux2 + rowNum;
+  }
+
+  return {
+    dataToDisplay: finalresult,
+    rowNum: rowNum,
+  };
 };

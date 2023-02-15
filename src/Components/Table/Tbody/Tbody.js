@@ -1,11 +1,9 @@
-import { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useRef } from "react";
+import { useSelector } from "react-redux";
 import classes from "./Tbody.module.css";
 
 const Tbody = ({ data }) => {
-  const dispatch = useDispatch();
   const tbody = useRef();
-
   const tblBody = data.map((ele, index) => {
     return (
       <tr key={index}>

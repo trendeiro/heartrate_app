@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import {  useEffect,  useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Options from "../../Components/Options/Options";
+import { arrangePagesToDisplay } from "../../Components/Table/js/TableFunction";
 import { chartActions } from "../../Store/slice/chart/chart-slice";
 import ChartSection from "../ChartSection/ChartSection";
 import TableSection from "../TableSection/TableSection";
@@ -11,6 +12,7 @@ function MainSection({ error, isLoading }) {
   const mainSection = useRef();
   const chartStatus = useSelector((state) => state.chart.showChart);
   const tableStatus = useSelector((state) => state.chart.showTable);
+  const tblDisplaySet = useSelector((state) => state.chart.tblDisplaySet);
 
   const dataSection = () => {
     if (isLoading) {
@@ -45,8 +47,37 @@ function MainSection({ error, isLoading }) {
           value: mainSection.current.offsetHeight,
         })
       );
+
+      return;
     }
   }, [tableStatus, dispatch]);
+
+  useEffect(() => {
+    function teste() {
+      dispatch(
+        chartActions.changeSetTblDisplay({
+          toChange: "space",
+          value: mainSection.current.offsetHeight,
+        })
+      );
+       const newRow = arrangePagesToDisplay({settings:tblDisplaySet});
+      if(newRow !== tblDisplaySet.rowNum){
+        dispatch(
+          chartActions.changeSetTblDisplay({
+            toChange: "num",
+            value: newRow,
+          })
+        );
+      }
+      
+    }
+    if (tableStatus) {
+      window.addEventListener("resize", teste);
+    }
+    return () => {
+      window.removeEventListener("resize", teste);
+    };
+  }, [tableStatus, tblDisplaySet, dispatch]);
 
   return (
     <main className={classes.main}>

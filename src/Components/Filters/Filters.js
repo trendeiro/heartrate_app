@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import useChangeFilters from "../../Hooks/use-changeFilter";
-import { chartActions } from "../../Store/slice/chart/chart-slice";
 import SelectGroup from "../SelectGroup/SelectGroup";
 import classes from "./Filters.module.css";
 function Filters() {
-  const dispatch = useDispatch();
   const { updateFilter } = useChangeFilters();
   const [defaultsValue, setDefault] = useState({
     min: {

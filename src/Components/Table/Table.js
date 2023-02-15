@@ -9,35 +9,39 @@ function Table() {
   const dispatch = useDispatch();
   const table = useRef();
   const data = useSelector((state) => state.chart.data);
-  const settingsTbl = useSelector((state) => state.chart.settingsTableDisplay);
-
-  const [bodyData, setBodyData] = useState([]);
+  const settingsTbl = useSelector((state) => state.chart.tblDisplaySet);
+  const [tableIndex, setTableIndex] = useState(0);
+  
+  const [bodyData, setBodyData] = useState([[]]);
   const headers = ["Date", "Minimum", "Maximum", "Average"];
 
   useEffect(() => {
-    const arrangedData = setupDataToDisplay(data);
-    setBodyData(arrangedData);
+    if (tableIndex !== 0) {
+      setTableIndex(0);
+    }
+  }, []);
+
+  useEffect(() => {
+    const arrangedData = setupDataToDisplay({
+      data: data,
+      rowNum: settingsTbl.rowNum,
+    });
+    setBodyData(arrangedData.dataToDisplay);
     dispatch(
       chartActions.changeSetTblDisplay({
         toChange: "height",
         value: table.current.childNodes[0].offsetHeight,
       })
     );
-  }, [data, dispatch]);
+  }, [data,settingsTbl.rowNum,dispatch]);
 
-  useEffect(() => {
-    if (bodyData.length > 0) {
-      arrangePagesToDisplay({
-        data: bodyData,
-        settings: settingsTbl,
-      });
-    }
-  }, [bodyData]);
+  
+  
 
   return (
     <table ref={table} className={classes.table}>
       <Thead headers={headers} />
-      <Tbody data={bodyData} />
+      <Tbody data={bodyData[0]} />
     </table>
   );
 }

@@ -57,9 +57,7 @@ function Filters({ tblOpt }) {
     updateFilter("ave", type, e);
   };
 
-  const onChangeSortHandle = (type, e) => {
-    updateSort(type, e);
-  };
+  
 
   return (
     <div className={classes.selectSection}>

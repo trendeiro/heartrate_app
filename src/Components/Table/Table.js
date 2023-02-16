@@ -20,19 +20,26 @@ function Table() {
     setTableIndex(0);
   }, []);
 
+  
   useEffect(() => {
     const arrangedData = setupDataToDisplay({
       data: data,
       rowNum: settingsTbl.rowNum,
+      order: settingsTbl.sort,
       filters: filters,
     });
+    dispatch(chartActions.changePagesTotal(arrangedData.dataToDisplay.length))
     setBodyData(arrangedData.dataToDisplay);
-  }, [data, settingsTbl.rowNum, filters]);
+  }, [data, settingsTbl.rowNum,settingsTbl.sort, filters,dispatch]);
+
+  useEffect(()=>{
+    setTableIndex(settingsTbl.pages.act-1);
+  },[settingsTbl.pages.act])
 
   return (
     <table ref={table} className={classes.table}>
       <Thead headers={headers} />
-      <Tbody data={bodyData[0]} />
+      <Tbody data={bodyData[tableIndex]} />
     </table>
   );
 }

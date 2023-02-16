@@ -9,5 +9,23 @@
 
 .tblOpt {
   display: flex;
+  justify-content: space-around;
   gap: 2.4rem;
+}
+
+
+@media (max-width: 121em) {
+  .singleOption {
+    margin: 0 1.4rem;
+  }
+  .optionsSection {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 0 1.4rem;
+    gap: 1.2rem;
+  }
+  .tblOpt {
+    grid-row: 3;
+  }
+  
 }

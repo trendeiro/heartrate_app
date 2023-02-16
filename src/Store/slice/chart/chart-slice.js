@@ -28,8 +28,14 @@ const chartSlice = createSlice({
     tblDisplaySet: {
       rowNum: 15,
       sort: {
-        order: "desc",
-        type: "min",
+        order: "Desc",
+        type: "Date",
+      },
+      pages: {
+        prev: 0,
+        act: 1,
+        next: 2,
+        total: null,
       },
     },
   },
@@ -37,6 +43,7 @@ const chartSlice = createSlice({
     resetState(state, action) {
       state.data = [];
     },
+
     getData(state, action) {
       state.data = action.payload;
       const initFilters = findIniFilters(action.payload);
@@ -52,10 +59,10 @@ const chartSlice = createSlice({
     showTable(state, action) {
       state.showTable = action.payload;
     },
-    changeSetTblDisplay(state, action) {
-      if (action.payload.toChange === "num") {
-        state.tblDisplaySet.rowNum = action.payload.value;
-      }
+    changeRowNum(state, action) {
+     
+        state.tblDisplaySet.rowNum = action.payload;
+      
     },
 
     changeFilterOpt(state, action) {
@@ -84,9 +91,27 @@ const chartSlice = createSlice({
         return;
       }
     },
-    changeSort(state, action) {
-      state.filterOpt.sort.order = action.payload.order;
-      state.filterOpt.sort.type = action.payload.type;
+    changeSortType(state, action) {
+      state.tblDisplaySet.sort.type = action.payload;
+    },
+    changeSortOrder(state, action) {
+      state.tblDisplaySet.sort.order = action.payload;
+    },
+    changePagesTotal(state, action) {
+      state.tblDisplaySet.pages.total = action.payload;
+      state.tblDisplaySet.pages.prev = 0;
+      state.tblDisplaySet.pages.next = 2;
+      state.tblDisplaySet.pages.act = 1;
+    },
+    nextPage(state, action) {
+      state.tblDisplaySet.pages.prev = action.payload.prev;
+      state.tblDisplaySet.pages.next = action.payload.next;
+      state.tblDisplaySet.pages.act = action.payload.act;
+    },
+    prevPage(state, action) {
+      state.tblDisplaySet.pages.prev = action.payload.prev;
+      state.tblDisplaySet.pages.next = action.payload.next;
+      state.tblDisplaySet.pages.act = action.payload.act;
     },
   },
 });

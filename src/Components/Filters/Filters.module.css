@@ -3,3 +3,9 @@
   gap: 2.4rem;
   justify-content: space-around;
 }
+
+@media (max-width: 121em) {
+  .selectSection {
+    gap: 1.4rem;
+  }
+}

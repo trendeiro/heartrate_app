@@ -9,3 +9,12 @@
   height: 7.3rem;
   transition: 0.3s;
 }
+
+@media (max-width: 121em) {
+  .button {
+    padding: 1.2rem 0.8rem;
+    width: 6.4rem;
+  height: 6.3rem;
+
+  }
+}

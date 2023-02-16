@@ -9,3 +9,33 @@
     gap: 1.4rem;
   }
 }
+
+@media (max-width: 81em) {
+  .selectSection {
+    flex-direction: column-reverse;
+    gap: 3.4rem;
+  }
+}
+
+@media (max-width: 63em) {
+  .selectSection {
+    flex-direction: row;
+    gap: 3.4rem;
+  }
+}
+
+@media (max-width: 49em) {
+  .selectSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 35em) {
+  .selectSection {
+    display: flex;
+    flex-direction: column;
+    gap: 3.4rem;
+  }
+}

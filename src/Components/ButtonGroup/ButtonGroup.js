@@ -1,22 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import { chartActions } from "../../Store/slice/chart/chart-slice";
+import { tableActions } from "../../Store/slice/table/table-slice";
 import Button from "../Ui/Buttons/Button";
 import classes from "./ButtonGroup.module.css";
 
 function ButtonGroup() {
   const dispatch = useDispatch();
   const chartStatus = useSelector((state) => state.chart.showChart);
-  const showTable = useSelector((state) => state.chart.showTable);
+  const showTable = useSelector((state) => state.table.showTable);
 
   const onClickChartHandle = () => {
     dispatch(chartActions.showChart(!chartStatus));
-    dispatch(chartActions.showTable(false));
+    dispatch(tableActions.showTable(false));
 
     dispatch(chartActions.setFilter());
   };
   const onClickTabletHandle = () => {
     dispatch(chartActions.showChart(false));
-    dispatch(chartActions.showTable(!showTable));
+    dispatch(tableActions.showTable(!showTable));
     dispatch(chartActions.setFilter());
   };
   return (

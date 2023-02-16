@@ -33,6 +33,12 @@ function SelectGroup({ groupOptions, groupDefault, labelText, onchangeEvent }) {
     );
   }, [groupOptions]);
 
+  /**
+   *
+   * useEffect to remove duplicated values and sort them after
+   *
+   */
+
   useEffect(() => {
     const uniqueOpt = removeDuplicates();
     const parsedOptions = uniqueOpt.map((options) => parseInt(options));

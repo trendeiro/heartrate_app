@@ -14,10 +14,6 @@
 #fff
 */
 
-
-
-
-
 *,
 *::after,
 *::before {
@@ -44,6 +40,12 @@ body {
   box-sizing: border-box;
 }
 
-canvas{
+canvas {
   padding: 1.6rem;
+}
+
+@media (max-width: 63em) {
+  html {
+    font-size: 50.5%;
+  }
 }

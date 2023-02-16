@@ -1,22 +1,40 @@
-import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Options from "../../Components/Options/Options";
-import { arrangePagesToDisplay } from "../../Components/Table/js/TableFunction";
-import { chartActions } from "../../Store/slice/chart/chart-slice";
+import TablePage from "../../Components/Table/TablePage/TablePage";
+import Warning from "../../Components/Warining/Warning";
 import ChartSection from "../ChartSection/ChartSection";
 import TableSection from "../TableSection/TableSection";
 import classes from "./MainSection.module.css";
 
 function MainSection({ error, isLoading }) {
-  const dispatch = useDispatch();
-  const mainSection = useRef();
+  const [connected, setConnected] = useState(navigator.onLine);
   const chartStatus = useSelector((state) => state.chart.showChart);
-  const tableStatus = useSelector((state) => state.chart.showTable);
-  const tblDisplaySet = useSelector((state) => state.chart.tblDisplaySet);
+  const tableStatus = useSelector((state) => state.table.showTable);
+
+  useEffect(() => {
+    const handleIntCon = () => {
+      setConnected(navigator.onLine);
+    };
+
+    window.addEventListener("online", handleIntCon);
+    window.addEventListener("offline", handleIntCon);
+
+    return () => {
+      window.removeEventListener("online", handleIntCon);
+      window.removeEventListener("offline", handleIntCon);
+    };
+  }, [connected]);
+
+  /**
+   * Function to verify what to show
+   *
+   * @returns Component to be shown
+   */
 
   const dataSection = () => {
     if (isLoading) {
-      return "is loading";
+      return <Warning text={"is loading"} subText={false} />;
     }
     if (!isLoading && !tableStatus && chartStatus) {
       return <ChartSection />;
@@ -25,11 +43,34 @@ function MainSection({ error, isLoading }) {
       return <TableSection />;
     }
     if (!isLoading && !chartStatus && !tableStatus) {
-      return "Please choose a way to see the data by clicking on one of the buttons in the right coner!";
+      if (!connected) {
+        return (
+          <Warning
+            text={"Lost internet connectivity!"}
+            subText={"Check your internet status and refresh the page."}
+          />
+        );
+      }
+      if (error) {
+        return (
+          <Warning
+            text={"Something went worng!"}
+            subText={"Check your internet status and refresh the page."}
+          />
+        );
+      }
+      return (
+        <Warning
+          text={
+            "Please choose a way to see the data by clicking on one of the buttons inthe right coner!"
+          }
+          subText={false}
+        />
+      );
     }
   };
 
-  const displayType = () => {
+  const displayTitle = () => {
     if (chartStatus) {
       return "Chart";
     }
@@ -41,13 +82,15 @@ function MainSection({ error, isLoading }) {
 
   return (
     <main className={classes.main}>
-      <h2 className={classes.main__title}>{displayType()} heart beat</h2>
+      <h2 className={classes.main__title}>{displayTitle()} heart beat</h2>
       <div className={classes.main__section}>
         <div className={classes.main__btnSection}>
           <Options />
         </div>
-        <div ref={mainSection} className={classes.main__showDataSection}>
+        <div className={classes.main__showDataSection}>
           {dataSection()}
+
+          {tableStatus && <TablePage />}
         </div>
       </div>
     </main>

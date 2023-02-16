@@ -1,3 +1,9 @@
+/**
+ *
+ * Function to fix the visual appearance date param
+ *
+ */
+
 export const arrangeDate = (date) => {
   const oriDate = new Date(date);
   const month = (oriDate.getMonth() + 1).toString().padStart(2, "0");
@@ -9,6 +15,12 @@ export const arrangeDate = (date) => {
   const time = [hours, min].join(":");
   return [fullDate, time].join(" ");
 };
+
+/**
+ *
+ *   Function to find and return an object with each maximum and minimum values
+ *
+ */
 
 export const findIniFilters = (data) => {
   const dataMin = data.map((min) => min.minimum);

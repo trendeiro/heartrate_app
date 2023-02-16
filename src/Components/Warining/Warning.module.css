@@ -1,0 +1,32 @@
+.note {
+  min-height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.noteText {
+  font-size: 2.5rem;
+  letter-spacing: 0.2rem;
+}
+.noteSubtext {
+  font-size: 1.8rem;
+}
+
+@media (max-width: 81em) {
+  .noteText {
+    font-size: 1.8rem;
+  }
+  .noteSubtext {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 49em) {
+  .noteText {
+    font-size: 1.4rem;
+  }
+  .noteSubtext {
+    font-size: 1rem;
+  }
+}

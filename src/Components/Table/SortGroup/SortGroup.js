@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { chartActions } from "../../../Store/slice/chart/chart-slice";
+import { tableActions } from "../../../Store/slice/table/table-slice";
 import SelectBox from "../../Ui/SelectBox/SelectBox";
 import classes from "./SortGroup.module.css";
 
@@ -7,12 +7,11 @@ function SortGroup() {
   const dispatch = useDispatch();
 
   const handleChangeType = (e) => {
-    console.log(e.target.value)
-    dispatch(chartActions.changeSortType(e.target.value));
+    dispatch(tableActions.changeSortType(e.target.value));
   };
 
   const handleChangeOrder = (e) => {
-    dispatch(chartActions.changeSortOrder(e.target.value));
+    dispatch(tableActions.changeSortOrder(e.target.value));
   };
 
   return (

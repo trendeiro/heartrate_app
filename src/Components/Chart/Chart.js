@@ -23,6 +23,10 @@ ChartJS.register(
   Legend
 );
 
+/**
+ * Variable options with publing require information to run chart
+ */
+
 export const options = {
   responsive: true,
   interaction: {
@@ -55,6 +59,10 @@ export function Chart({ data: dbData }) {
     const arragedDate = arrangeDate(dateTime.dateTime);
     return arragedDate;
   });
+
+  /**
+   * Variable data with publing require information to run chart
+   */
 
   const data = {
     labels,

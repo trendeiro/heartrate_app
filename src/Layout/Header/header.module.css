@@ -8,6 +8,7 @@
   );
   border-bottom-left-radius: 8rem;
   border-bottom-right-radius: 8rem;
+  width: 100%;
 }
 
 .header__text-box {
@@ -16,6 +17,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 100%;
 }
 .heading-primary {
   color: #fff;
@@ -69,5 +71,31 @@
   100% {
     opacity: 1;
     transform: translate(0);
+  }
+}
+
+@media (max-width: 98em) {
+  .heading-primary--main {
+    font-size: 5.2rem;
+    letter-spacing: 1.5rem;
+  }
+  .heading-primary--sub {
+    font-size: 1.4rem;
+    letter-spacing: 1rem;
+  }
+}
+
+@media (max-width: 63em) {
+  .heading-primary--main {
+    letter-spacing: 1rem;
+  }
+  .heading-primary--sub {
+    letter-spacing: 0.5rem;
+  }
+}
+
+@media (max-height: 42em) {
+  .heading-primary {
+    margin: auto 0;
   }
 }

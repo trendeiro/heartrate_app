@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { useSelector } from "react-redux";
 import classes from "./Tbody.module.css";
 
 const Tbody = ({ data }) => {

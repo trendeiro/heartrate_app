@@ -4,7 +4,7 @@ import useChangeFilters from "../../Hooks/use-changeFilter";
 import SelectGroup from "../SelectGroup/SelectGroup";
 import classes from "./Filters.module.css";
 function Filters({ tblOpt }) {
-  const { updateFilter, updateSort } = useChangeFilters();
+  const { updateFilter } = useChangeFilters();
   const [defaultsValue, setDefault] = useState({
     min: {
       min: null,
@@ -19,13 +19,21 @@ function Filters({ tblOpt }) {
       max: null,
     },
   });
+
   const [dataForOptions, setDataForOptions] = useState({
     min: [],
     max: [],
     ave: [],
   });
+
   const data = useSelector((state) => state.chart.data);
   const filterOpt = useSelector((state) => state.chart.filterOpt);
+
+  /**
+   *
+   * useEffect to retrive default values
+   *
+   */
 
   useEffect(() => {
     const min = [];
@@ -56,8 +64,6 @@ function Filters({ tblOpt }) {
   const onChangeAveHandle = (e, type) => {
     updateFilter("ave", type, e);
   };
-
-  
 
   return (
     <div className={classes.selectSection}>

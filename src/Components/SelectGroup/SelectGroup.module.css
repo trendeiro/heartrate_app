@@ -1,4 +1,5 @@
 .selectGroupSection {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +28,7 @@
 
 @media (max-width: 121em) {
   .selectGroup {
-    gap:0.8rem;
+    gap: 0.8rem;
     padding: 0 1.2rem;
   }
 }

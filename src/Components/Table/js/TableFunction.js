@@ -1,42 +1,10 @@
 import { arrangeDate } from "../../../js/bdDataManage.js";
 
-export const getHeaders = (data) => {
-  const headers = [];
-
-  data.forEach((ele, index) => {
-    if (index === 0) {
-      const keys = Object.keys(ele);
-      keys.forEach((ele) => {
-        headers.push(ele);
-      });
-      return;
-    }
-    Object.keys(ele).forEach((element, index) => {
-      if (headers[index] !== element) {
-        headers.push(element);
-        return;
-      }
-      return;
-    });
-    return;
-  });
-
-  return headers;
-};
-
-export const arrangePagesToDisplay = ({ settings }) => {
-  const totalRows = settings.spaceAvaileble / settings.rowHeight - 2;
-  let exactTotalRows = totalRows;
-
-  if (totalRows % 2) {
-    exactTotalRows = totalRows - (totalRows % 1);
-  }
-
-  if (settings.rowNum !== exactTotalRows) {
-    return exactTotalRows;
-  }
-  return settings.rowNum;
-};
+/**
+ *
+ * Function to filter data
+ *
+ */
 
 const filterData = (data, filters) => {
   const dataMinFiltered = [];
@@ -75,6 +43,12 @@ const filterData = (data, filters) => {
   });
   return dataAveFiltered;
 };
+
+/**
+ *
+ * Function to sort data
+ *
+ */
 
 const sortData = (orderData, convertData) => {
   if (orderData.type === "Date") {
@@ -115,6 +89,12 @@ const sortData = (orderData, convertData) => {
   }
 };
 
+/**
+ *
+ * Function to order data
+ *
+ */
+
 export const orderData = (data, orderData) => {
   const convertData = data.map((ele) => {
     return {
@@ -130,9 +110,15 @@ export const orderData = (data, orderData) => {
   return sortedData;
 };
 
-export const setupDataToDisplay = ({ data, rowNum, filters,order }) => {
+/**
+ *
+ * Function to create the data format to be displayed in table
+ *
+ */
+
+export const setupDataToDisplay = ({ data, rowNum, filters, order }) => {
   const dataFilter = filterData(data, filters);
-  const dataSorted = orderData(dataFilter,order);
+  const dataSorted = orderData(dataFilter, order);
 
   const changeOrder = dataSorted.map((ele) => {
     const arrangedDate = arrangeDate(ele.dateTime);
@@ -144,24 +130,21 @@ export const setupDataToDisplay = ({ data, rowNum, filters,order }) => {
     };
   });
 
-
   const finalresult = [];
-  
 
   let totalPage = changeOrder.length / parseInt(rowNum);
   let exactTotalPage = totalPage;
-  
+
   if (totalPage % 1 >= 0.1) {
     exactTotalPage = totalPage - (totalPage % 1) + 1;
   }
   let aux1 = 0;
   let aux2 = parseInt(rowNum);
-  
+
   for (let i = 0; i < exactTotalPage; i++) {
     finalresult.push(changeOrder.slice(aux1, aux2));
     aux1 = aux2;
     aux2 = aux2 + parseInt(rowNum);
-    
   }
 
   return {

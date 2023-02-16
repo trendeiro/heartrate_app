@@ -1,5 +1,4 @@
 .tbody td {
-  /* border: 1px solid #343a40; */
   padding: 0.6rem 1.4rem;
 }
 
@@ -9,4 +8,10 @@
 }
 .tbody tr:nth-child(odd) {
   background-color: #fff;
+}
+
+@media (max-width: 35em) {
+  .tbody td {
+    padding: 0.6rem 1.4rem;
+  }
 }

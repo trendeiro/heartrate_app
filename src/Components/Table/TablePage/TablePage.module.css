@@ -1,6 +1,8 @@
 .btnPage {
   display: flex;
   gap: 1.2rem;
+  justify-content: center;
+  padding-bottom: 1.4rem;
 }
 
 .btnPageLayout {
@@ -28,6 +30,6 @@
 
 @media (max-width: 121em) {
   .btnPage {
-    gap:0.8rem;
+    gap: 0.8rem;
   }
 }

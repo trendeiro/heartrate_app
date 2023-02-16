@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 
+/**
+ *
+ * Costume hook to retrive data from database with isLoading state and error handling
+ *
+ */
+
 const backend = axios.create({
   baseURL: "http://localhost:3000/",
 });

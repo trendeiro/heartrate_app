@@ -2,3 +2,22 @@
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 81em) {
+  .tableSection {
+    width: 100%;
+    padding: 0 1.8rem 0 0;
+  }
+}
+
+@media (max-width: 63em) {
+  .tableSection {
+    padding: 0 1.8rem;
+  }
+}
+
+@media (max-width: 35em) {
+  .tableSection {
+    padding: 0 0.8rem;
+  }
+}

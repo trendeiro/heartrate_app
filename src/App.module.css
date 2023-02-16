@@ -2,8 +2,6 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  overflow-x: hidden;
-  /* overflow-y: hidden; */
 }
 
 .mainContainer {
@@ -13,6 +11,8 @@
   transform: translate(0%, -125%);
 }
 
-
-
-
+@media (max-height: 42em) {
+  .mainContainer {
+    transform: translate(0%, -115%);
+  }
+}

@@ -1,6 +1,12 @@
 import { useDispatch } from "react-redux";
 import { chartActions } from "../Store/slice/chart/chart-slice";
 
+/**
+ *
+ * Costume hook to handle the updates to the filters
+ *
+ */
+
 const useChangeFilters = () => {
   const dispatch = useDispatch();
 
@@ -14,18 +20,8 @@ const useChangeFilters = () => {
     );
   };
 
-  const updateSort = (type, e) => {
-    dispatch(
-      chartActions.changeSort({
-        type: type,
-        order: e.target.value,
-      })
-    );
-  };
-
   return {
     updateFilter,
-    updateSort,
   };
 };
 

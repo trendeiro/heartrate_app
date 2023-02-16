@@ -19,11 +19,9 @@ function SelectBox({ options, defaultVal, onChangeEvent }) {
   };
 
   return (
-    <div>
-      <select className={classes.select} onChange={onChangeEvent}>
-        {DataOptions()}
-      </select>
-    </div>
+    <select className={classes.select} onChange={onChangeEvent}>
+      {DataOptions()}
+    </select>
   );
 }
 

@@ -1,28 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
-import { chartActions } from "../../../Store/slice/chart/chart-slice";
+import { tableActions } from "../../../Store/slice/table/table-slice";
 import Button from "../../Ui/Buttons/Button";
 import classes from "./TablePage.module.css";
 function TablePage() {
   const dispatch = useDispatch();
-  const pagesSettings = useSelector((state) => state.chart.tblDisplaySet.pages);
-  const onPrevHandle = () => {
+  const pagesSettings = useSelector((state) => state.table.tblDisplaySet.pages);
+
+  const onPrevPageHandle = () => {
     if (pagesSettings.prev === 0) {
       return;
     }
     dispatch(
-      chartActions.prevPage({
+      tableActions.ChangePage({
         prev: pagesSettings.prev - 1,
         act: pagesSettings.act - 1,
         next: pagesSettings.next - 1,
       })
     );
   };
-  const onNextkHandle = () => {
+
+  const onNextPageHandle = () => {
     if (pagesSettings.act === pagesSettings.total) {
       return;
     }
     dispatch(
-      chartActions.prevPage({
+      tableActions.ChangePage({
         prev: pagesSettings.prev + 1,
         act: pagesSettings.act + 1,
         next: pagesSettings.next + 1,
@@ -38,13 +40,13 @@ function TablePage() {
           key={"goBAck"}
           text={"<"}
           style={[classes.btnPageLayout, classes.btnMovePage]}
-          onClickHandle={onPrevHandle}
+          onClickHandle={onPrevPageHandle}
         />
         <Button
           key={"prev"}
           text={pagesSettings.prev === 0 ? "" : pagesSettings.prev}
           style={[classes.btnPageLayout, classes.btnMovePage, classes.btnPrev]}
-          onClickHandle={onPrevHandle}
+          onClickHandle={onPrevPageHandle}
         />
         <Button
           key={"act"}
@@ -57,13 +59,13 @@ function TablePage() {
             pagesSettings.act === pagesSettings.total ? "" : pagesSettings.next
           }
           style={[classes.btnPageLayout, classes.btnMovePage, classes.btnNext]}
-          onClickHandle={onNextkHandle}
+          onClickHandle={onNextPageHandle}
         />
         <Button
           key={"goNext"}
           text={">"}
           style={[classes.btnPageLayout, classes.btnMovePage]}
-          onClickHandle={onNextkHandle}
+          onClickHandle={onNextPageHandle}
         />
       </div>
     </div>

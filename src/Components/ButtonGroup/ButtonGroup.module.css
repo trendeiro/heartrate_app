@@ -11,10 +11,28 @@
   box-shadow: inset 0 0 0 3px #b82e38;
 }
 
-
 @media (max-width: 121em) {
   .buttonSection {
     gap: 1.6rem;
     justify-content: end;
+  }
+}
+
+@media (max-width: 81em) {
+  .buttonSection {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 63em) {
+  .buttonSection {
+    padding: 0;
+  }
+}
+
+@media (max-width: 35em) {
+  .buttonSection {
+    grid-row: 1;
+    grid-column: 1/3;
   }
 }

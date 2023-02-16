@@ -9,7 +9,8 @@
 }
 
 @media (max-width: 121em) {
-  .selectGroup {
+  .select {
     padding: 0.8rem;
+    font-size: 1.6rem;
   }
 }

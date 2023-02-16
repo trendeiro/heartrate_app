@@ -20,6 +20,7 @@
   font-size: 3.6rem;
   font-weight: 300;
   letter-spacing: 0.5rem;
+  padding-top: 1.2rem;
 }
 .main__section {
   display: flex;
@@ -49,5 +50,27 @@
     opacity: 1;
     height: 65vh;
     width: 90vw;
+  }
+}
+
+@media (max-width: 81em) {
+  .main__section {
+    flex-direction: row;
+    gap: 1.2rem;
+  }
+  .main__showDataSection {
+    width: 100%;
+  }
+  .main__btnSection {
+    margin: 1.2rem 0 0 1.2rem;
+  }
+}
+@media (max-width: 49em) {
+}
+
+@media (max-width: 63em) {
+  .main__section {
+    flex-direction: column;
+    gap: 1.2rem;
   }
 }

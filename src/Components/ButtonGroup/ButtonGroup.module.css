@@ -1,7 +1,7 @@
 .buttonSection {
   display: flex;
   gap: 1.6rem;
-  float: right;
+  justify-content: center;
   padding-right: 1.6rem;
 }
 
@@ -14,13 +14,11 @@
 @media (max-width: 121em) {
   .buttonSection {
     gap: 1.6rem;
-    justify-content: end;
   }
 }
 
 @media (max-width: 81em) {
   .buttonSection {
-    justify-content: center;
   }
 }
 

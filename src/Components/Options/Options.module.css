@@ -3,7 +3,7 @@
 }
 .optionsSection {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 2.4rem;
 }
 
@@ -20,7 +20,7 @@
   gap: 2.4rem;
 }
 
-@media (max-width: 121em) {
+/* @media (max-width: 121em) {
   .singleOption {
     margin: 0 1.4rem;
   }
@@ -71,3 +71,4 @@
     justify-content: space-between;
   }
 }
+ */

@@ -1,21 +1,10 @@
 .header {
-  height: 65%;
-  width: inherit;
-  background-image: linear-gradient(
-    to right,
-    rgba(230, 57, 70, 0.8),
-    rgba(161, 40, 49, 0.8)
-  );
-  border-bottom-left-radius: 8rem;
-  border-bottom-right-radius: 8rem;
-  width: 100%;
+  display: inline-block;
+  min-width: 100%;
 }
 
 .header__text-box {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: inline-block;
   text-align: center;
   width: 100%;
 }

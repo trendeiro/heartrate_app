@@ -1,4 +1,16 @@
+@font-face {
+  font-family: "Ionicons";
+  src: url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1");
+  src: url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1#iefix")
+      format("arrow-up-outline"),
+    url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.svg?v=2.0.1#Ionicons")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .thead th {
+  position: relative;
   background-color: #a12831;
   color: #fff;
   width: 25%;
@@ -8,8 +20,35 @@
 .thead tr th:first-child {
   width: 30%;
 }
+
+.icon {
+  stroke: #fff;
+}
+
+.teste {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  width: 2.2rem;
+  height: 2.4rem;
+  transform: translate(-90%, -50%);
+  border-radius: 100px;
+}
+
+.teste:hover {
+  background-color: rgb(230, 57, 70, 0.8);
+}
 @media (max-width: 49em) {
+  .thead tr th {
+    padding: 0.6rem 1rem;
+  }
   .thead tr th:first-child {
     width: 50%;
+  }
+}
+
+@media (max-width: 35em) {
+  .thead tr th {
+    padding: 0 0.5rem;
   }
 }

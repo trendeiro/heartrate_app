@@ -44,7 +44,7 @@ canvas {
   padding: 1.6rem;
 }
 
-@media (max-width: 63em) {
+@media (max-width: 49em) {
   html {
     font-size: 50.5%;
   }

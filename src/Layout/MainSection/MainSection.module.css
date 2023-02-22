@@ -27,9 +27,10 @@
   flex-direction: column;
   gap: 1.6rem;
   min-height: 50vh;
-  height: auto;
 }
 .main__btnSection {
+  display: flex;
+  justify-items: center;
   padding: 1.2rem;
 }
 .main__showDataSection {
@@ -55,7 +56,6 @@
 
 @media (max-width: 81em) {
   .main__section {
-    flex-direction: row;
     gap: 1.2rem;
   }
   .main__showDataSection {

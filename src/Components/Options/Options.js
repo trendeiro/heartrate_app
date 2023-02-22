@@ -41,9 +41,6 @@ function Options() {
 
   return (
     <div className={optionStyle.join(" ")}>
-      {(chartStatus || tableStatus) && <Filters tblOpt={tableStatus} />}
-      {showSortOpt}
-
       <ButtonGroup />
     </div>
   );

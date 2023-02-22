@@ -41,6 +41,8 @@ function Table() {
 
   return (
     <>
+      <button>Filtros</button>
+
       <table ref={table} className={classes.table}>
         <Thead headers={headers} />
         <Tbody data={bodyData[tableIndex]} />

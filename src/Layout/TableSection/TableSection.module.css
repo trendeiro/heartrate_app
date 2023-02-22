@@ -1,23 +1,24 @@
 .tableSection {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 @media (max-width: 81em) {
   .tableSection {
     width: 100%;
-    padding: 0 1.8rem 0 0;
+    padding: 0 1.8rem;
   }
 }
 
 @media (max-width: 63em) {
   .tableSection {
-    padding: 0 1.8rem;
+    padding: 0 0.8rem;
   }
 }
 
 @media (max-width: 35em) {
   .tableSection {
-    padding: 0 0.8rem;
+    padding: 0 0;
   }
 }

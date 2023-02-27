@@ -53,25 +53,25 @@ const filterData = (data, filters) => {
 const sortData = (orderData, convertData) => {
   if (orderData.type === "Date") {
     const sortedData = convertData.sort((first, second) => {
-      if (orderData.order === "Desc") {
+      if (orderData.desc) {
         return first.dateTime > second.dateTime ? 1 : -1;
       }
       return first.dateTime < second.dateTime ? 1 : -1;
     });
     return sortedData;
   }
-  if (orderData.type === "Min") {
+  if (orderData.type === "Minimum") {
     const sortedData = convertData.sort((first, second) => {
-      if (orderData.order === "Desc") {
+      if (orderData.desc) {
         return first.minimum > second.minimum ? 1 : -1;
       }
       return first.minimum < second.minimum ? 1 : -1;
     });
     return sortedData;
   }
-  if (orderData.type === "Max") {
+  if (orderData.type === "Maximum") {
     const sortedData = convertData.sort((first, second) => {
-      if (orderData.order === "Desc") {
+      if (orderData.desc) {
         return first.maximum > second.maximum ? 1 : -1;
       }
       return first.maximum < second.maximum ? 1 : -1;
@@ -80,7 +80,7 @@ const sortData = (orderData, convertData) => {
   }
   if (orderData.type === "Average") {
     const sortedData = convertData.sort((first, second) => {
-      if (orderData.order === "Desc") {
+      if (orderData.desc) {
         return first.meanAverage > second.meanAverage ? 1 : -1;
       }
       return first.meanAverage < second.meanAverage ? 1 : -1;
@@ -151,4 +151,24 @@ export const setupDataToDisplay = ({ data, rowNum, filters, order }) => {
     dataToDisplay: finalresult,
     rowNum: rowNum,
   };
+};
+
+/**
+ * Function to find each header is sorted and the order
+ */
+
+export const findSortedHeader = ({ sortData }) => {
+  const headersDefault = ["Date", "Minimum", "Maximum", "Average"];
+  const header = [];
+  headersDefault.forEach((ele) => {
+    if (sortData.type === ele) {
+      return header.push({
+        headerText: ele,
+        sorted: true,
+        type: ele,
+      });
+    }
+        return header.push({ headerText: ele, sorted: false, type: ele, });
+  });
+  return header;
 };

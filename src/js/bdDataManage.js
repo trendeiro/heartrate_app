@@ -34,18 +34,26 @@ export const findIniFilters = (data) => {
     min: {
       min: Math.min(...dataMin),
       max: Math.max(...dataMin),
+      show:false,
+
     },
     max: {
       min: Math.min(...dataMax),
       max: Math.max(...dataMax),
+      show:false,
+
     },
     ave: {
       min: Math.min(...dataAve),
       max: Math.max(...dataAve),
+      show:false,
+
     },
     date: {
       begin: formatDateBegin,
       end: formatDateEnd,
+      show:false,
+
     },
   };
 };

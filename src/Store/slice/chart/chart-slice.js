@@ -9,14 +9,17 @@ const chartSlice = createSlice({
       min: {
         min: null,
         max: null,
+        show: false,
       },
       max: {
         min: null,
         max: null,
+        show: false,
       },
       ave: {
         min: null,
         max: null,
+        show: false,
       },
       date: {
         begin: null,
@@ -38,8 +41,32 @@ const chartSlice = createSlice({
     showChart(state, action) {
       state.showChart = action.payload;
     },
+    showFilters(state, action) {
+      if (action.payload.type === "min") {
+        state.filterOpt.min.show = action.payload.showFilter;
+        state.filterOpt.max.show = false;
+        state.filterOpt.ave.show = false;
+        return;
+      }
+      if (action.payload.type === "max") {
+        state.filterOpt.max.show = action.payload.showFilter;
+        state.filterOpt.min.show = false;
+        state.filterOpt.ave.show = false;
+
+        return;
+      }
+      if (action.payload.type === "ave") {
+        state.filterOpt.ave.show = action.payload.showFilter;
+        state.filterOpt.max.show = false;
+        state.filterOpt.min.show = false;
+
+        return;
+      }
+    },
 
     changeFilterOpt(state, action) {
+      console.log(action)
+
       if (action.payload.beat === "min") {
         if (action.payload.type === "min") {
           state.filterOpt.min.min = action.payload.value;

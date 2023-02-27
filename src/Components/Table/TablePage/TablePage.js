@@ -34,12 +34,12 @@ function TablePage() {
 
   return (
     <div className={classes.pageContainer}>
-      <label>Page</label>
+      <label>Page:</label>
       <div className={classes.btnPage}>
         <Button
           key={"goBAck"}
           text={"<"}
-          style={[classes.btnPageLayout, classes.btnMovePage]}
+          style={[classes.btnPageLayout, classes.btnMovePage,classes.onHoverEffect]}
           onClickHandle={onPrevPageHandle}
         />
         <Button
@@ -64,7 +64,7 @@ function TablePage() {
         <Button
           key={"goNext"}
           text={">"}
-          style={[classes.btnPageLayout, classes.btnMovePage]}
+          style={[classes.btnPageLayout, classes.btnMovePage,classes.onHoverEffect]}
           onClickHandle={onNextPageHandle}
         />
       </div>

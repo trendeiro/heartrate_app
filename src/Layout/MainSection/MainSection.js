@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Options from "../../Components/Options/Options";
-import TablePage from "../../Components/Table/TablePage/TablePage";
+import Card from "../../Components/Ui/Card/Card";
+import SelectBox from "../../Components/Ui/SelectBox/SelectBox";
 import Warning from "../../Components/Warining/Warning";
 import ChartSection from "../ChartSection/ChartSection";
 import TableSection from "../TableSection/TableSection";
@@ -9,6 +10,7 @@ import classes from "./MainSection.module.css";
 
 function MainSection({ error, isLoading }) {
   const [connected, setConnected] = useState(navigator.onLine);
+
   const chartStatus = useSelector((state) => state.chart.showChart);
   const tableStatus = useSelector((state) => state.table.showTable);
 
@@ -82,17 +84,18 @@ function MainSection({ error, isLoading }) {
 
   return (
     <main className={classes.main}>
-      <h2 className={classes.main__title}>{displayTitle()} heart beat</h2>
-      <div className={classes.main__section}>
-        <div className={classes.main__btnSection}>
-          <Options />
+      <Card>
+        <h2 className={classes.main__title}>{displayTitle()} heart beat</h2>
+        <div className={classes.main__section}>
+          <div className={classes.main__btnSection}>
+            <Options />
+          </div>
+          <div className={classes.main__showDataSection}>
+            {dataSection()}
+            <div className={classes.footer_table}></div>
+          </div>
         </div>
-        <div className={classes.main__showDataSection}>
-          {dataSection()}
-
-          {tableStatus && <TablePage />}
-        </div>
-      </div>
+      </Card>
     </main>
   );
 }

@@ -1,7 +1,6 @@
 .container {
   position: relative;
   min-height: 100vh;
-  min-width: 100vw;
   background-image: linear-gradient(
     to right,
     rgba(230, 57, 70, 0.8),
@@ -10,11 +9,11 @@
 }
 
 .mainContainer {
-  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
 }
 
-@media (max-height: 42em) {
+/* @media (max-height: 42em) {
   .mainContainer {
     transform: translate(0%, -115%);
   }
-}
+} */

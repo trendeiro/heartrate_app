@@ -1,8 +1,25 @@
 .tableSection {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
 }
+.rowNum {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.tableFooter{
+  display: flex;
+  width: 70%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+
 
 @media (max-width: 81em) {
   .tableSection {

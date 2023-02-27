@@ -11,7 +11,7 @@
 
 .thead th {
   position: relative;
-  background-color: #a12831;
+  background-color: #495057;
   color: #fff;
   width: 25%;
   padding: 0.6rem 1.4rem;
@@ -21,11 +21,15 @@
   width: 30%;
 }
 
-.icon {
+.iconActive {
   stroke: #fff;
 }
 
-.teste {
+.iconNotActive {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btnIcon {
   position: absolute;
   top: 50%;
   left: 90%;
@@ -35,9 +39,10 @@
   border-radius: 100px;
 }
 
-.teste:hover {
+.btnIcon:hover {
   background-color: rgb(230, 57, 70, 0.8);
 }
+
 @media (max-width: 49em) {
   .thead tr th {
     padding: 0.6rem 1rem;

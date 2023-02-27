@@ -7,7 +7,7 @@ const tableSlice = createSlice({
     tblDisplaySet: {
       rowNum: 15,
       sort: {
-        order: "Desc",
+        desc: true,
         type: "Date",
       },
       pages: {
@@ -26,10 +26,13 @@ const tableSlice = createSlice({
       state.showTable = action.payload;
     },
     changeSortType(state, action) {
+      console.log(action)
       state.tblDisplaySet.sort.type = action.payload;
+      state.tblDisplaySet.sort.desc = true;
+
     },
     changeSortOrder(state, action) {
-      state.tblDisplaySet.sort.order = action.payload;
+      state.tblDisplaySet.sort.desc = action.payload;
     },
     changePagesTotal(state, action) {
       state.tblDisplaySet.pages.total = action.payload;

@@ -1,12 +1,7 @@
 .main {
-  background-color: #fff;
   height: auto;
   min-height: 70vh;
   width: 90vw;
-  border: 1px #777;
-  border-radius: 3.6rem;
-  box-shadow: 0 1rem 2rem rgb(0 0 0 / 20%);
-  animation: MainSection_growFadeIn__Zyv34 0.5s;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -30,11 +25,21 @@
 }
 .main__btnSection {
   display: flex;
-  justify-items: center;
+  justify-content: center;
   padding: 1.2rem;
 }
 .main__showDataSection {
   min-height: inherit;
+}
+
+.footer_table{
+  display: flex;
+  justify-content: flex-end;
+  gap: 2.4rem;
+  padding-right: 1.4rem;
+
+  padding-bottom: 1.4rem;
+
 }
 
 @keyframes growFadeIn {
@@ -61,9 +66,7 @@
   .main__showDataSection {
     width: 100%;
   }
-  .main__btnSection {
-    margin: 1.2rem 0 0 1.2rem;
-  }
+  
 }
 @media (max-width: 49em) {
 }

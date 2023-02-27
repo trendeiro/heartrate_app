@@ -11,11 +11,12 @@ const useChangeFilters = () => {
   const dispatch = useDispatch();
 
   const updateFilter = (beat, type, e) => {
+    console.log(beat)
     dispatch(
       chartActions.changeFilterOpt({
         beat: beat,
         type: type,
-        value: e.target.value,
+        value: e,
       })
     );
   };

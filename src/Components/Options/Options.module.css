@@ -7,16 +7,11 @@
   margin: 0 2.4rem;
 }
 
-.rowNum {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .tblOpt {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 2.4rem;
 }
 

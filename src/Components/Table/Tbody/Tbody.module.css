@@ -3,7 +3,7 @@
 }
 
 .tbody tr:nth-child(even) {
-  background-color: rgb(230, 57, 70, 0.8);
+  background-color: #adb5bd;
   color: #fff;
 }
 .tbody tr:nth-child(odd) {

@@ -1,33 +1,69 @@
-import { useSelector } from "react-redux";
+import { IonIcon } from "@ionic/react";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./Thead.module.css";
 
-const Thead = ({ headers }) => {
-  const testeee = useSelector((state) => state.table.tblDisplaySet.sort);
-  console.log(classes.teste);
-  const teste = (
-    <ion-icon className={classes.icon} name="arrow-up-outline"></ion-icon>
-  );
-  const teste2 = <ion-icon name="arrow-down-outline"></ion-icon>;
+import { arrowUpOutline, arrowDownOutline } from "ionicons/icons";
+import { tableActions } from "../../../Store/slice/table/table-slice";
 
-  const sorteBtn = (
-    <div className={classes.teste}>
-      {testeee.order === "Desc" ? teste2 : teste}
+const Thead = ({ headers }) => {
+  const sortData = useSelector((state) => state.table.tblDisplaySet.sort);
+  const dispatch = useDispatch();
+
+  const iconArrawUpActive = (
+    <IonIcon className={classes.iconActive} icon={arrowUpOutline}></IonIcon>
+  );
+  const iconArrawDonwActive = (
+    <IonIcon className={classes.iconActive} icon={arrowDownOutline}></IonIcon>
+  );
+  const iconArrawDonwNotActive = (
+    <IonIcon
+      className={classes.iconNotActive}
+      icon={arrowDownOutline}
+    ></IonIcon>
+  );
+
+  const onClickOnActive = () => {
+    dispatch(tableActions.changeSortOrder(!sortData.desc));
+  };
+
+  const onClickToBeActive = (type) => {
+    dispatch(tableActions.changeSortType(type));
+  };
+
+  const sorteBtnActive = (
+    <div className={classes.btnIcon} onClick={onClickOnActive}>
+      {sortData.desc ? iconArrawDonwActive : iconArrawUpActive}
     </div>
   );
 
+  const sortBtnNotActive = (type) => {
+   return( <div
+      className={classes.btnIcon}
+      onClick={() => {
+        onClickToBeActive(type);
+      }}
+    >
+      {iconArrawDonwNotActive}
+    </div>);
+  };
+
   const header = (
     <tr>
-      {headers.map((ele, index) => {
-        if (ele === testeee.type)
+      {headers.map((ele) => {
+        if (ele.sorted)
           return (
-            <th>
-              {ele}
+            <th key={ele.type}>
+              {ele.headerText}
 
-              {sorteBtn}
+              {sorteBtnActive}
             </th>
           );
 
-        return <th>{ele}</th>;
+        return (
+          <th key={ele.type}>
+            {ele.headerText} {sortBtnNotActive(ele.type)}
+          </th>
+        );
       })}
     </tr>
   );

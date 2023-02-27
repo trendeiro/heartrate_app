@@ -1,8 +1,22 @@
+.pageContainer{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+.onHoverEffect{
+  background-color: #fff;
+}
+
+.onHoverEffect:hover{
+  background-color: #f5b0b5;
+}
+
+
 .btnPage {
   display: flex;
   gap: 1.2rem;
   justify-content: center;
-  padding-bottom: 1.4rem;
 }
 
 .btnPageLayout {

@@ -1,0 +1,9 @@
+.btnInputGroup{
+   position: relative;
+}
+.btnFilters{
+   width: 9.4rem;
+   height: 6.3rem;
+   background-color: #ddd;
+   color: #333;
+ }

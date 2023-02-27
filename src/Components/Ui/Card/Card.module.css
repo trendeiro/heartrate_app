@@ -1,0 +1,31 @@
+.card{
+   background-color: #fff;
+   height: auto;
+   min-height: 70vh;
+   width: 90vw;
+   border: 1px #777;
+   border-radius: 3.6rem;
+   box-shadow: 0 1rem 2rem rgb(0 0 0 / 20%);
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   gap: 1.6rem;
+   margin: 0 auto;
+   animation: growFadeIn 0.5s;
+}
+
+@keyframes growFadeIn {
+   0% {
+     opacity: 0;
+     width: 0;
+     height: 0;
+   }
+ 
+   
+ 
+   100% {
+     opacity: 1;
+     height: 65vh;
+     width: 90vw;
+   }
+ }

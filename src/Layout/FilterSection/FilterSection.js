@@ -8,24 +8,13 @@ function FilterSection(params) {
   const [showFilter, setShowFilter] = useState(false);
   const filterOpt = useSelector((state) => state.chart.filterOpt);
   const dispatch = useDispatch();
-  const [defaultsValue, setDefault] = useState({
-    min: {
-      min: null,
-      max: null,
-    },
-    max: {
-      min: null,
-      max: null,
-    },
-    ave: {
-      min: null,
-      max: null,
-    },
-  });
+  const [defaultsValue, setDefault] = useState(false);
 
   useEffect(() => {
-    setDefault(filterOpt);
-  }, []);
+    if (!defaultsValue) {
+      setDefault(filterOpt);
+    }
+  }, [filterOpt, defaultsValue]);
 
   const onClickFilterHandle = () => {
     setShowFilter((prev) => !prev);
@@ -37,8 +26,7 @@ function FilterSection(params) {
   ];
 
   const onClickShowFilterType = (type, showFilter) => {
-    console.log(type)
-    dispatch(chartActions.showFilters({type, showFilter}));
+    dispatch(chartActions.showFilters({ type, showFilter }));
   };
 
   const filters = (
@@ -47,7 +35,9 @@ function FilterSection(params) {
         key={"filter1"}
         text={"Minimum Beat"}
         beat={"min"}
+        firstBtn={true}
         defaultVal={defaultsValue.min}
+        filterVAlues={filterOpt.min}
         showFilter={filterOpt.min.show}
         onClickShowFilter={onClickShowFilterType}
       />
@@ -56,6 +46,7 @@ function FilterSection(params) {
         text={"Maximum Beat"}
         beat={"max"}
         defaultVal={defaultsValue.max}
+        filterVAlues={filterOpt.max}
         showFilter={filterOpt.max.show}
         onClickShowFilter={onClickShowFilterType}
       />
@@ -63,7 +54,9 @@ function FilterSection(params) {
         key={"filter3"}
         text={"Average Beat"}
         beat={"ave"}
+        lastBtn={true}
         defaultVal={defaultsValue.ave}
+        filterVAlues={filterOpt.ave}
         showFilter={filterOpt.ave.show}
         onClickShowFilter={onClickShowFilterType}
       />

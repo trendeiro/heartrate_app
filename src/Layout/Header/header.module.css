@@ -83,6 +83,15 @@
   }
 }
 
+@media (max-width: 22em) {
+  .heading-primary--main {
+    font-size: 4.2rem;
+  }
+  .heading-primary--sub {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-height: 42em) {
   .heading-primary {
     margin: auto 0;

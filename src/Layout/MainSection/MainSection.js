@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Options from "../../Components/Options/Options";
 import Card from "../../Components/Ui/Card/Card";
-import SelectBox from "../../Components/Ui/SelectBox/SelectBox";
 import Warning from "../../Components/Warining/Warning";
 import ChartSection from "../ChartSection/ChartSection";
 import TableSection from "../TableSection/TableSection";
@@ -64,7 +63,7 @@ function MainSection({ error, isLoading }) {
       return (
         <Warning
           text={
-            "Please choose a way to see the data by clicking on one of the buttons inthe right coner!"
+            "Please choose a way to see the data by clicking on one of the buttons!"
           }
           subText={false}
         />

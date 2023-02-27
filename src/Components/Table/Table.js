@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { findSortedHeader, setupDataToDisplay } from "./js/TableFunction";
 import Tbody from "./Tbody/Tbody";
@@ -7,7 +7,6 @@ import classes from "./Table.module.css";
 import { tableActions } from "../../Store/slice/table/table-slice";
 function Table() {
   const dispatch = useDispatch();
-  const table = useRef();
   const data = useSelector((state) => state.chart.data);
   const filters = useSelector((state) => state.chart.filterOpt);
   const settingsTbl = useSelector((state) => state.table.tblDisplaySet);
@@ -25,7 +24,6 @@ function Table() {
   /**
    * UseEffect to manage the data to be displayed , change the number of total pages
    */
-  console.log(filters)
 
   useEffect(() => {
     const arrangedData = setupDataToDisplay({
@@ -49,7 +47,7 @@ function Table() {
 
   return (
     <>
-      <table ref={table} className={classes.table}>
+      <table className={classes.table}>
         <Thead headers={headers} />
         <Tbody data={bodyData[tableIndex]} />
       </table>

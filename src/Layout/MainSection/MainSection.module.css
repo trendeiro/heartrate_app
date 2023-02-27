@@ -1,7 +1,6 @@
 .main {
   height: auto;
   min-height: 70vh;
-  width: 90vw;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -32,14 +31,13 @@
   min-height: inherit;
 }
 
-.footer_table{
+.footer_table {
   display: flex;
   justify-content: flex-end;
   gap: 2.4rem;
   padding-right: 1.4rem;
 
   padding-bottom: 1.4rem;
-
 }
 
 @keyframes growFadeIn {
@@ -66,7 +64,6 @@
   .main__showDataSection {
     width: 100%;
   }
-  
 }
 @media (max-width: 49em) {
 }

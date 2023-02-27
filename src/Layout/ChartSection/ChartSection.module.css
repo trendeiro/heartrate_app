@@ -1,5 +1,23 @@
 .chartSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: inherit;
+}
+
+.chart {
   min-height: inherit;
   padding-bottom: 1.4rem;
   margin: 0 auto;
+  width: 100%;
+}
+.chartOverflow {
+  width: 100%;
+  min-height: inherit;
+  overflow-y: hidden;
+}
+@media (max-width: 63em) {
+  .chart {
+    min-width: 150vw;
+  }
 }

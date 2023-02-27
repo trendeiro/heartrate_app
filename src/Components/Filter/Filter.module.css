@@ -1,9 +1,46 @@
-.btnInputGroup{
-   position: relative;
+.btnInputGroup {
+  position: relative;
 }
-.btnFilters{
-   width: 9.4rem;
-   height: 6.3rem;
-   background-color: #ddd;
-   color: #333;
- }
+.btnFilters {
+  width: 9.4rem;
+  height: 6.3rem;
+  background-color: #dee2e6;
+  color: #333;
+}
+
+.btnFiltersOpen {
+  background-color: #868e96;
+  color: #000000;
+}
+
+@media (max-width: 63em) {
+  .firstInputGroup {
+    transform: translate(-35%, 0%) !important;
+  }
+}
+
+@media (max-width: 49em) {
+  .btnFilters {
+    width: 8.4rem;
+    height: 6.3rem;
+    font-size: 1.4rem;
+  }
+  .firstInputGroup {
+    transform: translate(-30%, 0%) !important;
+  }
+}
+
+@media (max-width: 35em) {
+  .firstInputGroup {
+    transform: translate(-20%, 0%) !important;
+  }
+  .lastInputGroup {
+    transform: translate(-65%, 0%) !important;
+  }
+}
+
+@media (max-width: 22em) {
+  .firstInputGroup {
+    transform: translate(-15%, 0%) !important;
+  }
+}

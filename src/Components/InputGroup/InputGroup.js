@@ -2,44 +2,42 @@ import classes from "./InputGroup.module.css";
 import Card from "../Ui/Card/Card";
 import { useEffect, useState } from "react";
 
-function InputGroup({ onMinChangeHandle, onMaxChangeHandle, defaultVal }) {
-  const [min, setMin] = useState(defaultVal.min);
-  const [max, setMax] = useState(defaultVal.max);
-  const [error, setError] = useState(false)
+function InputGroup({
+  style,
+  onMinChangeHandle,
+  onMaxChangeHandle,
+  filterVAlues,
+  defaultVal,
+}) {
+  const [min, setMin] = useState(filterVAlues.min);
+  const [max, setMax] = useState(filterVAlues.max);
+
   useEffect(() => {
     if (min === "") {
-      setError(false)
-
-      onMinChangeHandle(defaultVal.min,"min")
+      onMinChangeHandle(defaultVal.min, "min");
       return;
     }
-    if(max < min){
-      onMinChangeHandle(defaultVal.min,"min")
-      
+    if (max < min) {
+      onMinChangeHandle(defaultVal.min, "min");
+
       return;
     }
-    setError(false)
-    onMinChangeHandle(min,"min");
-
-  }, [min,max,onMinChangeHandle,defaultVal.min]);
+    onMinChangeHandle(min, "min");
+  }, [min, max, onMinChangeHandle, defaultVal.min]);
 
   useEffect(() => {
     if (max === "") {
-      onMaxChangeHandle(defaultVal.max,"max")
+      onMaxChangeHandle(defaultVal.max, "max");
       return;
     }
-    if(max < min){
-    console.log(max)
-
-      onMaxChangeHandle(defaultVal.max,"max")
+    if (max < min) {
+      onMaxChangeHandle(defaultVal.max, "max");
 
       return;
     }
-    console.log(max)
 
-    onMaxChangeHandle(max,"max");
-
-  }, [min,max,onMaxChangeHandle,defaultVal.max]);
+    onMaxChangeHandle(max, "max");
+  }, [min, max, onMaxChangeHandle, defaultVal.max]);
 
   const onChangeMinHandle = (e) => {
     setMin(e.target.value);
@@ -48,10 +46,14 @@ function InputGroup({ onMinChangeHandle, onMaxChangeHandle, defaultVal }) {
     setMax(e.target.value);
   };
 
+  const cardCss = [classes.inputCard, ...style];
+
   return (
     <div>
-      <Card style={classes.inputCard}>
-        <label className={classes.inputLabel}>Minimum Beats - Maximum Beats</label>
+      <Card style={cardCss.join(" ")}>
+        <label className={classes.inputLabel}>
+          Minimum Beats - Maximum Beats
+        </label>
         <div className={classes.inputsSection}>
           <input
             className={classes.input}
@@ -68,7 +70,6 @@ function InputGroup({ onMinChangeHandle, onMaxChangeHandle, defaultVal }) {
           <input
             className={classes.input}
             placeholder={`Maximum value is ${defaultVal.max}`}
-
             value={max}
             onChange={(e) => onChangeMaxHandle(e)}
             onInput={(e) => {

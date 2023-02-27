@@ -1,37 +1,48 @@
 .filterSection {
-   position: relative;
-   width: 70%;
-   display: flex;
-   flex-direction: row-reverse;
-   justify-content: space-between;
-   align-items: center;
+  position: relative;
+  width: 70%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.btnFilter{
-   background-color: #ddd;
-   color: #333;
+.btnFilter {
+  background-color: #dee2e6;
+  color: #333;
 }
 
-.filtersHide{
-   display: flex;
-   gap: 4.4rem;
-   justify-content: center;
-   align-items: center;
-   visibility: hidden; 
-   opacity: 0;
-   transition: ease-in-out 0.3s;  
+.filtersHide {
+  display: flex;
+  gap: 4.4rem;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: ease-in-out 0.3s;
 }
 
-.showFilters{
-   opacity: 1;
-   visibility: visible;   
-
+.showFilters {
+  opacity: 1;
+  visibility: visible;
 }
 
+@media (max-width: 81em) {
+  .filterSection {
+    width: 80%;
+  }
+}
 
-
-
-
-
-
-
+@media (max-width: 63em) {
+  .filterSection {
+    width: 90%;
+  }
+  .filtersHide {
+    gap: 3.4rem;
+  }
+}
+@media (max-width: 49em) {
+  .filtersHide {
+    gap: 2.4rem;
+  }
+}

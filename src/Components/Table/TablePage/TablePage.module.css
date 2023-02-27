@@ -1,17 +1,16 @@
-.pageContainer{
+.pageContainer {
   display: flex;
   justify-content: center;
   gap: 1rem;
   align-items: center;
 }
-.onHoverEffect{
+.onHoverEffect {
   background-color: #fff;
 }
 
-.onHoverEffect:hover{
+.onHoverEffect:hover {
   background-color: #f5b0b5;
 }
-
 
 .btnPage {
   display: flex;
@@ -45,5 +44,16 @@
 @media (max-width: 121em) {
   .btnPage {
     gap: 0.8rem;
+  }
+}
+
+@media (max-width: 22em) {
+  .pageContainer {
+    font-size: 1.4rem;
+  }
+  .btnPageLayout {
+    font-size: 1.4rem;
+    width: 3.4rem;
+    height: 3.4rem;
   }
 }

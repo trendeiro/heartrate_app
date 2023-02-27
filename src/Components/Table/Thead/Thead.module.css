@@ -37,10 +37,11 @@
   height: 2.4rem;
   transform: translate(-90%, -50%);
   border-radius: 100px;
+  background-color: #495057;
 }
 
 .btnIcon:hover {
-  background-color: rgb(230, 57, 70, 0.8);
+  background-color: #adb5bd;
 }
 
 @media (max-width: 49em) {

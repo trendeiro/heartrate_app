@@ -54,7 +54,6 @@ export const options = {
 
 export function Chart({ data: dbData }) {
   const filterOpt = useSelector((state) => state.chart.filterOpt);
-
   const labels = dbData.map((dateTime) => {
     const arragedDate = arrangeDate(dateTime.dateTime);
     return arragedDate;

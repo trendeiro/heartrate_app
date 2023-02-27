@@ -1,5 +1,5 @@
 .table {
-  width: 100%;
+  width: 75%;
   border-collapse: collapse;
   font-size: 1.8rem;
   margin: 1.6rem auto;
@@ -29,5 +29,11 @@
 @media (max-width: 63em) {
   .table {
     width: 100%;
+  }
+}
+
+@media (max-width: 22em) {
+  .table {
+    font-size: 1.4rem;
   }
 }
